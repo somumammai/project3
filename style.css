@@ -1,0 +1,191 @@
+
+:root {
+  --bg: #0b0e14;
+  --surface: #141b22;
+  --surface-2: #1e262e;
+  --text: #eaf2f8;
+  --muted: #aab6c2;
+  --border: #2a3947;
+  --card-shadow: 0 8px 28px rgba(0,0,0,.18);
+  --radius: 14px;
+  --maxw: 920px;
+  --focus: 0 0 0 3px rgba(99, 102, 241, .45);
+}
+
+:root[data-theme="light"] {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --surface-2: #f2f4f7;
+  --text: #0b1320;
+  --muted: #5b616f;
+  --border: #e5e7eb;
+  --card-shadow: 0 6px 20px rgba(0,0,0,.08);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans";
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  width: 92%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: -999px;
+}
+.skip-link:focus {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  background: var(--surface);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  z-index: 9999;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: color-m-mix(in oklab, var(--surface), transparent 60%);
+  backdrop-filter: saturate(1.2) blur(6px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+.brand-logo {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+  color: white;
+}
+.brand-title {
+  font-size: 1.05rem;
+}
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: .5rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  transition: transform 0.2s ease;
+}
+.theme-toggle:focus { outline: none; box-shadow: var(--focus); }
+.theme-toggle:hover { transform: translateY(-1px); }
+
+.main {
+  padding: 2rem 0;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.25rem;
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  margin-bottom: 1.25rem;
+}
+.card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.article-section h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+.hero-card {
+  text-align: left;
+  padding: 1.75rem;
+  border-radius: 18px;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, rgba(99,102,241,.15), rgba(6,182,212,.15));
+}
+.hero-card h1 {
+  font-size: 1.75rem;
+  margin: 0 0 .4rem;
+}
+.subtitle {
+  color: var(--muted);
+  margin-top: .25rem;
+  font-size: .95rem;
+}
+ ul { padding-left: 1.25rem; }
+ li { margin: .35rem 0; }
+
+pre {
+  background: #0b0f14;
+  color: #d9e7f5;
+  padding: .75rem;
+  border-radius: 8px;
+  overflow: auto;
+  font-family: ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;
+  font-size: .9rem;
+  border: 1px solid #1f2a33;
+}
+code { background: transparent; }
+
+.code-block { margin: .75rem 0; border-radius: 6px; }
+@media (min-width: 720px) {
+  .container { width: 88%; }
+  .hero-card h1 { font-size: 2rem; }
+}
+@media (min-width: 1024px) {
+  .container { width: 76%; }
+}
+
+.site-footer {
+  padding: 2rem 0;
+  color: var(--muted);
+  text-align: center;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+.muted { color: var(--muted); }
+
+hr.sep {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 1rem 0 1.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* respect system, but user toggle is primary via data-theme */
+}
+
+
